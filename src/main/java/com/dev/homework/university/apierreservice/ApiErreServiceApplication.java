@@ -9,8 +9,7 @@ public class ApiErreServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiErreServiceApplication.class, args);
     }
-
-    // TODO EXISTE ALGUN ERRO NA CONFIGURAÇÃO DO OPENAPI
+    
     // TODO TESTAR SWAGGER
     // TODO CONFIGURAR A TROCA DE CHAVES DE ENCRIPTAÇÃO
     // TODO CONFIGURAR A TROCA DE MENSAGEM ENCRIPTADA
