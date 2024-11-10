@@ -3,19 +3,16 @@ package com.dev.homework.university.apierreservice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication()
 public class ApiErreServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ApiErreServiceApplication.class, args);
     }
 
+    // TODO EXISTE ALGUN ERRO NA CONFIGURAÇÃO DO OPENAPI
+    // TODO TESTAR SWAGGER
+    // TODO CONFIGURAR A TROCA DE CHAVES DE ENCRIPTAÇÃO
+    // TODO CONFIGURAR A TROCA DE MENSAGEM ENCRIPTADA
 }
 
-// TODO RESOLVER No AuthenticationProvider found for org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-// TODO TESTAR SWAGGER
-// TODO CONFIGURAR RATELIMIT COM BUCKET4J
-// TODO CONFIGURAR HTTPS
-// TODO CONFIGURAR VERIFICAÇÃO EM DOIS FATORES COM GOOGLE AUTHENTICATOR, TOTP
-// TODO IMPLEMENTAR CORS PROTECTION
-// TODO IMPLEMENTAR HELMET

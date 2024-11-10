@@ -1,27 +1,29 @@
 package com.dev.homework.university.apierreservice.service;
 
 import com.dev.homework.university.apierreservice.entity.User;
-
 import com.dev.homework.university.apierreservice.payload.LoginPayload;
 import com.dev.homework.university.apierreservice.payload.RegisterPayload;
 import com.dev.homework.university.apierreservice.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
 
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-    public UserService(UserRepository userRepository) {
+    @Autowired
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+
     }
 
     public boolean login(LoginPayload payload) {
         return userRepository.findByUsername(payload.getUsername())
-                .filter(user -> passwordEncoder.matches(payload.getPassword(), user.getPassword()))
+                .filter(u -> Objects.equals(payload.getPassword(), u.getPassword()))
                 .isPresent();
     }
 
@@ -32,7 +34,7 @@ public class UserService {
         userRepository.save(
                 User.builder()
                         .username(payload.getUsername())
-                        .password(passwordEncoder.encode(payload.getPassword()))
+                        .password(payload.getPassword())
                         .build()
         );
     }

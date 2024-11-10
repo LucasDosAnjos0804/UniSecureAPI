@@ -29,18 +29,28 @@
     <properties>
         <java.version>23</java.version>
     </properties>
-
     <dependencies>
-
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.6.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>3.3.5</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.3.4</version>
+            <version>3.3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>3.3.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.3.232</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -50,146 +60,18 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Dependência para a API do Java EE 8 -->
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>8.0</version>
-            <scope>provided</scope>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.7.0-RC1</version>
         </dependency>
-
-        <!-- Dependência para a API de Servlets -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Dependência para JPA -->
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>2.2</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Dependência para o JAX-RS -->
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.1</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.3.4</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.3.4</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>2.2.224</version>
-            <scope>runtime</scope>
-        </dependency>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
-        <!--        <dependency>-->
-<!--            <groupId>io.springfox</groupId>-->
-<!--            <artifactId>springfox-boot-starter</artifactId>-->
-<!--            <version>3.0.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
-<!--            &lt;!&ndash; Para monitoramento e auditoria, o Spring Boot Actuator é utilizado para rastrear acessos, falhas de autenticação, tentativas de login, etc. &ndash;&gt;-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--            &lt;!&ndash; permite mapear objetos Java para tabelas de banco de dados relacionais de forma automática&ndash;&gt;-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-oauth2-client</artifactId>-->
-<!--            &lt;!&ndash; É utilizado para integração com provedores de identidade como Google, Facebook, GitHub, etc., ou seja, OAuth2 e OpenID Connect para autenticação e autorização.            &ndash;&gt;-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--            &lt;!&ndash; Utilizada para adicionar funcionalidades de segurança na sua aplicação Spring Boot,-->
-<!--                fornece suporte para ferramentas de autenticação e autorização, além de mecanismos de-->
-<!--                proteção contra ataques comuns, como de proteção Contra CSRF (Cross-Site Request Forgery),-->
-<!--                Autenticação com JWT (JSON Web Token) e autenticação em Dois Fatores (2FA), segurança-->
-<!--                de Rotas da API, Autenticação com JWT (JSON Web Token).-->
-<!--            &ndash;&gt;-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--            <version>10.15.2</version>-->
-<!--            &lt;!&ndash; O Flyway permite versionar as alterações no esquema do banco de dados através de scripts de migração, que são executados em ordem.            &ndash;&gt;-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.github.vladimir-bukhtoyarov</groupId>-->
-<!--            <artifactId>bucket4j-core</artifactId>-->
-<!--            <version>8.0.1</version>-->
-<!--            &lt;!&ndash; O Bucket4j é uma biblioteca Java que implementa um algoritmo de rate limiting (limitação de taxa) de forma eficiente.-->
-<!--                 Essa funcionalidade é especialmente útil para proteger APIs de ataques de DDoS (Distributed Denial of Service),-->
-<!--                 abusos e para garantir que os recursos do sistema sejam usados de maneira justa.-->
-<!--            &ndash;&gt;-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.google.zxing</groupId>-->
-<!--            <artifactId>javase</artifactId>-->
-<!--            <version>3.5.3</version>-->
-<!--            &lt;!&ndash; O ZXing permite que você leia códigos de barras de diferentes formatos, incluindo QR Codes, Data Matrix, UPC, EAN, e-->
-<!--                muitos outros. Utilizado para gerar QR Codes para autenticação, links ou informações que precisam ser compartilhadas facilmente.-->
-<!--            &ndash;&gt;-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>jakarta.platform</groupId>-->
-<!--            <artifactId>jakarta.jakartaee-api</artifactId>-->
-<!--            <version>10.0.0</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-devtools</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
-
-
-
-<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;            <groupId>org.springframework.security</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;            <artifactId>spring-security-test</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;            <scope>test</scope>&ndash;&gt;-->
-<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -209,11 +91,6 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.17.1</version>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.wildfly.plugins</groupId>-->
-<!--                <artifactId>wildfly-maven-plugin</artifactId>-->
-<!--                <version>3.0.1.Final</version>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 </project>
