@@ -1,6 +1,6 @@
 package com.dev.homework.university.apierreservice.service;
 
-import com.dev.homework.university.apierreservice.entity.User;
+import com.dev.homework.university.apierreservice.entity.Users;
 import com.dev.homework.university.apierreservice.payload.LoginPayload;
 import com.dev.homework.university.apierreservice.payload.RegisterPayload;
 import com.dev.homework.university.apierreservice.repository.UserRepository;
@@ -32,7 +32,7 @@ public class UserService {
             throw new IllegalArgumentException("Username already exists");
         }
         userRepository.save(
-                User.builder()
+                Users.builder()
                         .username(payload.getUsername())
                         .password(payload.getPassword())
                         .build()
