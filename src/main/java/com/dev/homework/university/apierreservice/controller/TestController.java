@@ -11,7 +11,7 @@ public class TestController {
 
     @GetMapping("/hello-word")
     public ResponseEntity<String> helloWord() {
-        return ResponseEntity.ok("Hello Word, man, eu te disse! kkkk");
+        return ResponseEntity.ok("Hello Word, man, vamo ver se demora ksadf! kkkk");
     }
 
     @PostMapping("/post-test")
