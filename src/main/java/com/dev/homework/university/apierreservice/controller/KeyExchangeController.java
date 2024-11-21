@@ -34,11 +34,20 @@ public class KeyExchangeController {
 
     @PostMapping
     public ResponseEntity<KeyExchangeResponse> exchangeKeys(@RequestBody KeyExchangeRequest request) throws Exception {
-        // Decode client's public key
-        byte[] clientPublicKeyBytes = Base64.getDecoder().decode(request.getClientPublicKey());
-        KeyFactory keyFactory = KeyFactory.getInstance("DH");
-        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(clientPublicKeyBytes);
-        PublicKey clientPublicKey = keyFactory.generatePublic(x509KeySpec);
+        if (request.getClientPublicKey() == null || request.getClientPublicKey().isEmpty()) {
+            return ResponseEntity.badRequest().body(new KeyExchangeResponse("Invalid client public key", null));
+        }
+
+        PublicKey clientPublicKey;
+        try {
+            // Decode client's public key
+            byte[] clientPublicKeyBytes = Base64.getDecoder().decode(request.getClientPublicKey());
+            KeyFactory keyFactory = KeyFactory.getInstance("DH");
+            X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(clientPublicKeyBytes);
+            clientPublicKey = keyFactory.generatePublic(x509KeySpec);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(new KeyExchangeResponse("Invalid Base64 encoding for client public key", null));
+        }
 
         // Generate shared secret
         KeyAgreement keyAgreement = KeyAgreement.getInstance("DH");
